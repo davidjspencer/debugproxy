@@ -11,9 +11,10 @@ lib64
 pyvenv.cfg
 pip-selfcheck.json
 /proxyweb/static/gen/
+node_modules
 .webassets-cache
 tags
 .sass-cache
 *.pyc
 *.retry
-
+venv
