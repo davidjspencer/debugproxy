@@ -62,7 +62,7 @@ curl http://example.com --proxy localhost:8080
 ```
 
 [debugproxy]: https://debugproxy.com
-[screenshort]: https://debugproxy.com/static/img/debugTechBikers.png
+[screenshot]: https://debugproxy.com/static/img/debugTechBikers.png
 [web_url]: http://localhost:5000
 [proxy_url]: localhost:8080
 [mitmproxy]: https://mitmproxy.org/
