@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>debugProxy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+    <div id="js-main">
+      loading...
+    </div>
+    <script>
+      window.username = "";
+      window.password = "";
+      window.session_id = "";
+      window.csrf_token = "";
+      window.websocket_url = "ws://localhost:5000/updates";
+      window.proxy_url = "localhost:8080";
+      window.requests = [];
+    </script>
+    <script crossorigin async src="http://localhost:4000/client/main.js"></script>
+</body>
+</html>
