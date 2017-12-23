@@ -19,15 +19,34 @@ export class ConnectionInfoComponent extends Component<Props> {
     }
   }
 
+  curlString() {
+    const proxy = new URL(window.proxy_url)
+    const proxy_url = proxy.username || proxy.password ?
+      `${proxy.username}:${proxy.password}@${proxy.hostname}:${proxy.port}` :
+      `${proxy.hostname}:${proxy.port}`
+
+    return `curl http://www.example.com --proxy ${proxy_url}`
+  }
+
+  credentials(proxy: URL) {
+    if (proxy.username || proxy.password) {
+      return (
+        <div>
+          <p className="username">
+            Username: <span>{ proxy.username }</span>
+          </p>
+          <p className="password">
+            Password: <span>{ proxy.password }</span>
+          </p>
+        </div>
+      )
+    } else {
+      return (null)
+    }
+  }
+
   render() {
-    var address = window.proxy_url
-    var addressStr = address.toString()
-    var userName = addressStr.slice(0,5)
-    var password = addressStr.slice(6,11)
-    var server = addressStr.slice(12,(addressStr.length - 5))
-    var port = addressStr.slice((addressStr.length - 4), addressStr.length)
-
-
+    var proxy = new URL(window.proxy_url)
 
     return (
       <div className="onboarding">
@@ -38,17 +57,12 @@ export class ConnectionInfoComponent extends Component<Props> {
             Use the following connection details in conjunction with the device configuration guides [links below] to configure your device:
           </p>
           <div className="session-info">
-            <p className="username">
-              Username: <span>{ userName }</span>
-            </p>
-            <p className="password">
-              Password: <span>{ password }</span>
-            </p>
+            { this.credentials(proxy) }
             <p className="server">
-              Proxy Server: <span>{ server }</span>
+              Proxy Server: <span>{ proxy.hostname }</span>
             </p>
             <p className="port">
-              Port: <span>{ port }</span>
+              Port: <span>{ proxy.port }</span>
             </p>
           </div>
 
@@ -57,7 +71,7 @@ export class ConnectionInfoComponent extends Component<Props> {
             test if the proxy works with this command:
           </p>
           <code className="curl">
-            curl http://www.example.com --proxy { userName }:{ password }@{ server }:{ port }
+            { this.curlString() }
           </code>
           <div className="guides">
             <a className="link-buttons yello-link" href="/help/curl" target="_blank">cURL</a>
