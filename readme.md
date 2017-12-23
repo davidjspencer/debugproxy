@@ -1,6 +1,6 @@
 # debugProxy 
 
-debugProxy is a web UI for mitmproxy. It's also the UI for (debugproxy.com)[1].
+debugProxy is a web UI for mitmproxy. It's also the UI for [debugproxy.com][1].
 
 _Note: The server implementation for this project is currently incomplete and
 many of the features in the UI are not yet supported by the server. Currently
