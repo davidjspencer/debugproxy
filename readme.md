@@ -2,11 +2,11 @@
 
 debugProxy is a web UI for mitmproxy. It's also the UI for (debugproxy.com)[1].
 
-__Note: The server implementation for this project is currently incomplete and
+_Note: The server implementation for this project is currently incomplete and
 many of the features in the UI are not yet supported by the server. Currently
-requests can be passivly views, but intercepting and modifying requests is not
+requests can be passivly viewed, but intercepting and modifying requests is not
 implemented. The initial goal is to get the server to feature parity with
-debugproxy.com and build a package that can be easily installed with `pip`.__
+debugproxy.com and build a package that can be easily installed with `pip`._
 
 ## Development
 
