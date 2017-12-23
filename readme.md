@@ -8,6 +8,10 @@ requests can be passivly viewed, but intercepting and modifying requests is not
 implemented. The initial goal is to get the server to feature parity with
 debugproxy.com and build a package that can be easily installed with `pip`._
 
+The UI looks something like this:
+
+![debugproxy screenshort][2]
+
 ## Development
 
 ### Proxy UI
@@ -49,3 +53,4 @@ To send a basic request through the proxy run:
 
 
 [1]: https://debugproxy.com
+[2]: https://debugproxy.com/static/img/debugTechBikers.png
