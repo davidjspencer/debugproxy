@@ -14,7 +14,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'debugproxy=proxyserver:proxyserver',
+            'debugproxy=proxyserver.main:start',
         ],
     }
 )
