@@ -23,10 +23,17 @@ class UpdatesHandler(tornado.websocket.WebSocketHandler):
                 print("Error sending message")
 
 
+class PingHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = {
+                "csrf_token":  self.xsrf_token.decode("utf-8"),
+                "success": True
+        }
+        self.write(json.dumps(response))
+
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
-        token = self.xsrf_token  # https://github.com/tornadoweb/tornado/issues/645
-        self.render("index.html")
+        self.render("index.html", csrf_token=self.xsrf_token)
 
 
 class Application(tornado.web.Application):
@@ -35,6 +42,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", IndexHandler),
             (r"/updates", UpdatesHandler),
+            (r"/sessions/ping/", PingHandler)
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
