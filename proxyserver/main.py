@@ -6,6 +6,7 @@ from mitmproxy.utils import version_check
 from proxyserver.web import Application
 from proxyserver.master import Master
 from proxyserver.configuration import configuration
+from proxyserver.intercepts import Intercepts
 
 
 def start() -> None:
@@ -17,7 +18,9 @@ def start() -> None:
     web_options, server = configuration()
     master = Master(web_options, loop, server)
 
-    web_application = Application(master)
+    intercepts = Intercepts()
+
+    web_application = Application(master, intercepts)
     http_server = tornado.httpserver.HTTPServer(web_application)
     http_server.listen(5000, "127.0.0.1")
 

@@ -17,7 +17,6 @@ class Master(mitmproxy.master.Master):
         super().__init__(options, server)
 
         self.loop = loop
-        self.app = Application(self)
 
         self.proxy_server_port = 8080
 
