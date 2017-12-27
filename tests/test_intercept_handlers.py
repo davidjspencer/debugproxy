@@ -5,6 +5,7 @@ from proxyserver.web import Application
 from proxyserver.intercepts import Intercepts, Intercept
 from tornado.httpclient import HTTPRequest
 from tornado import gen
+from proxyserver.web import UpdatesHandler
 
 
 @pytest.fixture
@@ -128,3 +129,14 @@ def test_intercepts_modify_intercept(http_client, base_url, app):
     assert response_data["success"] == True
     assert len(app.intercepts.all()) == 1
     assert app.intercepts.all()[0]["query"] == "updated-query"
+
+
+@pytest.mark.gen_test
+def test_websocket(http_client, http_port):
+    ws_url = "ws://localhost:" + str(http_port) + "/updates"
+    ws_client = yield tornado.websocket.websocket_connect(ws_url)
+
+    UpdatesHandler.broadcast({ "hello": "world" })
+
+    response = yield ws_client.read_message()
+    assert response == json.dumps({ "hello": "world" })
