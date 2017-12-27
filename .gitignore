@@ -10,7 +10,6 @@ lib64
 *__pycache__*
 pyvenv.cfg
 pip-selfcheck.json
-/proxyweb/static/gen/
 node_modules
 .webassets-cache
 tags
@@ -18,3 +17,5 @@ tags
 *.pyc
 *.retry
 venv
+.coverage
+proxyui/coverage

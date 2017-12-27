@@ -23,6 +23,24 @@ cd proxyui
 npm install
 ```
 
+Run the flow-type type checker
+
+```sh
+$ npm run-script flow
+```
+
+Run the tests, currently there is not many.
+
+```sh
+$ npm test
+```
+
+Run the tests with coverage, oh no!
+
+```sh
+node_modules/.bin/jest --coverage
+```
+
 Run the UI dev server
 
 ```
@@ -39,6 +57,18 @@ python3 -m venv venv
 pip3 install -U pip setuptools
 pip3 install -r requirements.txt
 python setup.py develop
+```
+
+Run the tests.
+
+```
+py.test tests
+```
+
+Run the tests with coverage:
+
+```
+py.test --cov-report term-missing --cov=proxyserver tests
 ```
 
 Run the server.

@@ -10,8 +10,9 @@ setup(
 
     install_requires=[
         'mitmproxy',
+        'pytest-tornado'
         'pytest',
-        'tornado'
+        'pytest-cov',
     ],
 
     entry_points={

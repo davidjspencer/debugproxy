@@ -1,3 +1,4 @@
 mitmproxy==2.0.2
 pytest==3.3.1
 pytest-tornado==0.4.5
+pytest-cov==1.8.1
