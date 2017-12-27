@@ -5,6 +5,7 @@ import tornado.ioloop
 from mitmproxy.utils import version_check
 from proxyserver.web import Application
 from proxyserver.master import Master
+from proxyserver.proxy import Proxy
 from proxyserver.configuration import configuration
 from proxyserver.intercepts import Intercepts
 
@@ -15,10 +16,11 @@ def start() -> None:
     AsyncIOMainLoop().install()
     loop = asyncio.get_event_loop()
 
-    web_options, server = configuration()
-    master = Master(web_options, loop, server)
-
     intercepts = Intercepts()
+    proxy = Proxy(loop, UpdatesHandler.broadcast)
+
+    web_options, server = configuration()
+    master = Master(web_options, loop, proxy, server)
 
     web_application = Application(master, intercepts)
     http_server = tornado.httpserver.HTTPServer(web_application)
