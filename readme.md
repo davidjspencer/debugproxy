@@ -26,13 +26,13 @@ npm install
 Run the flow-type type checker
 
 ```sh
-$ npm run-script flow
+npm run-script flow
 ```
 
 Run the tests, currently there is not many.
 
 ```sh
-$ npm test
+npm test
 ```
 
 Run the tests with coverage, oh no!
